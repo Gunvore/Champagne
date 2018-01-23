@@ -1,0 +1,15 @@
+<ion-content class="menu-page">
+  <ion-grid style="height: 100%; justify-content: center;" >
+    <ion-row>
+      <ion-col text-center>
+         
+        <ion-list>
+          <button ion-button outline full *ngFor="let item of items" (click)="itemSelected(item)">{{ item }}</button>
+        </ion-list>
+      
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+

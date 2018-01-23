@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Slides</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-toolbar>
+  <ion-buttons start>
+    <button ion-button color="white" (click)="menubuton()"> < Back</button>
+  </ion-buttons>
+  <ion-buttons end>
+    <button ion-button color="white" (click)="startbuton()">Skip</button>
+  </ion-buttons>
+</ion-toolbar>
+      
+      
+
+  <ion-content class="tutorial-page">
+  <ion-slides pager centeredSlides=false>
+        
+      
+    <ion-slide *ngFor="let slide of slides">
+      
+
+      
+      <h3 class="slide-title" [innerHTML]="slide.title"></h3>
+      
+      <img [src]="slide.image" width="40" height="40" class="slide-image"/>
+      
+      <p [innerHTML]="slide.description"></p>
+      
+      
+    </ion-slide>
+    
+ 
+            
+          
+    
+    <ion-slide>
+      <ion-toolbar>
+      </ion-toolbar>
+      <h2 class="slide-title">Commencer ?</h2>
+      <button ion-button large clear icon-end color="primary" (click)="startbuton()">
+        Start
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-slide>
+    
+    
+  </ion-slides>
+</ion-content>
+
+
