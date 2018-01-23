@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { SingletonService } from '../../providers/singleton/singleton';
+
 
 @Component({
   selector: 'page-contact',
@@ -7,8 +9,8 @@ import { NavController } from 'ionic-angular';
 })
 export class ContactPage {
 
-  constructor(public navCtrl: NavController) {
-
-  }
+ 
+   
 
 }
+ 

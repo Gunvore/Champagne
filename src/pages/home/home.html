@@ -1,17 +1,193 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>Production</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-content class="production-page">
+  <!-- Segment in content -->
+  <ion-segment [(ngModel)]="relationship" color="secondary">
+    <ion-segment-button value="champs">
+      champs
+    </ion-segment-button>
+    <ion-segment-button value="fabriques">
+      fabriques
+    </ion-segment-button>
+  </ion-segment>
+
+
+
+<div [ngSwitch]="relationship" (tap)="swipeEvent($event)">
+  <ion-list *ngSwitchCase="'champs'">
+    <ion-card>
+      <ion-card-content>
+        <ion-card-title>
+         Votre Exploitation
+        </ion-card-title>
+        <p>
+          Vous possédez 1000m2 de vigne. Cette supérficie votre fait raporter 100kg de raisin par An.
+        La récolte se fera chaque novembre.
+        
+        Les coutes d'entretien sont de 250€ par mois.
+        </p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-item>
+        <i class="fa fa-tint fa fw" aria-hidden="true"></i>
+         Stock Raisin
+        <ion-badge item-end>9OOOO</ion-badge>
+      </ion-item>
+    
+      <ion-item>
+        <i class="fa fa-arrows-alt fa fw" aria-hidden="true"></i>
+         Superficie Terrain : 
+        <ion-badge item-end>9</ion-badge>
+      </ion-item>
+      
+      <ion-item>
+        <i class="fa fa-tasks fa fw" aria-hidden="true"></i>
+         production
+        <ion-badge item-end>9</ion-badge>
+      </ion-item>
+      
+      <ion-item>
+        <i class="fa fa-wrench fa fw" aria-hidden="true"></i>
+         maintenance
+        <ion-badge item-end>9</ion-badge>
+      </ion-item>
+
+    </ion-card>
+    
+
+  
+    
+    
+    <ion-card>
+      <ion-card-header>
+        Acheter des nouveau terrains
+      </ion-card-header>
+      <ion-card-content>
+            <ion-list-header>
+                Superficie : 
+            </ion-list-header>
+            
+              <ion-item>
+                 <ion-range min="1" max="100" snaps="true" step="5" [(ngModel)]="singleValue">
+                   <ion-label range-left>1 ha</ion-label>
+                   <ion-label range-right>100 ha</ion-label>
+                 </ion-range>
+              </ion-item>
+
+            <ion-item no-lines>  
+                Superficie à acheter : 
+                <ion-badge color="light" item-right>{{singleValue}} ha</ion-badge>
+            </ion-item>
+            <ion-item no-lines>
+                Nouvelle superficie : 
+                <ion-badge color="danger" item-right>{{singleValue + 10}} ha</ion-badge>
+            </ion-item>  
+            
+            
+            <ion-item no-lines>  
+              Cout : 
+              <ion-badge color="dark" item-right>{{GetReadableNumber((singleValue + 10) * 25)}}</ion-badge>
+            </ion-item>
+
+            <ion-item no-lines> 
+              Nouvelle production : 
+              <ion-badge item-right>{{GetReadableNumber((singleValue + 10) * 9164)}} kg</ion-badge>
+            </ion-item>
+            <ion-item no-lines> 
+                <button ion-button full>Acheter</button>
+            </ion-item>
+
+      </ion-card-content>
+    </ion-card>
+  
+    
+  </ion-list>
+
+  <ion-list *ngSwitchCase="'fabriques'">
+    
+        
+        
+    <ion-item>
+      <ion-label text-center>Stock de raisin :  </ion-label>
+      <ion-badge item-right> {{GetReadableNumber(20000-type1-type2-type3)}} / {{GetReadableNumber(20000)}}</ion-badge>
+    </ion-item> 
+        
+
+          
+<ion-card *ngFor="let item of singleton.Game.fabrique; let i = index">
+  <ion-card-header>
+          Fabrique {{i+1}}
+  </ion-card-header>
+         
+  <ion-card-content>
+      <b><ion-icon name="construct"></ion-icon> Production : {{CalculateProd(item.machine,item.worker,item.technology,item.active)}} Unités  </b>
+      <ion-label><p> <ion-icon name="body"></ion-icon> Main d'oeuvre : {{item.worker}} Unités</p></ion-label>
+      <ion-label> <p> <ion-icon name="subway"></ion-icon> Machines : {{item.machine}} </p> </ion-label>
+      
+      <a ion-item>
+        <ion-label>Actif:</ion-label>
+        <ion-toggle item-right [(ngModel)]="item.active"></ion-toggle>
+      </a>
+      
+      
+      <ion-list>
+        <ion-item>
+          <ion-label>Type de Bouteilles à Produire :</ion-label>
+          <ion-select [(ngModel)]="item.type">
+                <ion-option value="{{singleton.Constantes.bouteille[1][3]}}">{{singleton.Constantes.bouteille[1][0]}}</ion-option>
+                <ion-option value="{{singleton.Constantes.bouteille[2][3]}}">{{singleton.Constantes.bouteille[2][0]}}</ion-option>
+                <ion-option value="{{singleton.Constantes.bouteille[3][3]}}">{{singleton.Constantes.bouteille[3][0]}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+
+
+  </ion-card-content>  
+</ion-card>
+
+
+        
+     
+    
+
+      
+
+
+    
+    <ion-card> 
+                <button ion-button full (click)="newfactory();">Construire une Fabrique</button>
+    </ion-card>
+    
+<div class="cs-prod-blank"></div>
+
+
+    
+  </ion-list>
+</div>
+
+
+
+
 </ion-content>
+
+<ion-card class="cs-prod">  
+
+      <div class="money">  
+        Money:
+        {{singleton.Game.money[0]}}
+      </div>
+      
+      {{singleton.Constantes.bouteille[1][1]}} 
+      <progress-bar [text]="GetTotalProduction('1')+' btl'" [value]="GetTotalProduction('1')" [max]="GetTotalProduction('0')"></progress-bar>
+      {{singleton.Constantes.bouteille[2][1]}}
+      <progress-bar [text]="GetTotalProduction('2')+' btl'" [max]="GetTotalProduction('0')"></progress-bar>
+      {{singleton.Constantes.bouteille[3][1]}}
+      <progress-bar [text]="GetTotalProduction('3')+' btl'" [max]="GetTotalProduction('0')"></progress-bar>
+      
+      
+</ion-card>

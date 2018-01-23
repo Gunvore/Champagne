@@ -14,3 +14,28 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+body, html, .menu-page, .tutorial-page, .production-page {
+  background: #33ff77; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left top, #33ff77, #00cc44); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(bottom right, #33ff77, #00cc44); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(bottom right, #33ff77, #00cc44); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to bottom right, #33ff77, #00cc44); /* Standard syntax */
+}
+
+
+.menu-page{
+  
+    }
+
+
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}

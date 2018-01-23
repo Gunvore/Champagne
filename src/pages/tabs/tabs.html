@@ -1,5 +1,6 @@
-<ion-tabs>
-  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="About" tabIcon="information-circle"></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>
+<ion-tabs color="secondary" animation="fade-in-out" on-swipe-left="onSwipeLeft()" on-swipe-right="onSwipeRight()">
+  <ion-tab [root]="tab1Root" tabTitle="Production" tabIcon="hammer"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="Ventes" tabIcon="cash"></ion-tab>
+  <ion-tab [root]="tab3Root" tabTitle="Améliorations" tabIcon="clipboard"></ion-tab>
+  <ion-tab [root]="tab4Root" tabTitle="Tour Suivant" tabIcon="arrow-forward" (ionSelect)="tapEvent($event);"></ion-tab>
 </ion-tabs>

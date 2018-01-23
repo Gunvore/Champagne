@@ -1,11 +1,36 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      About
+      {{GetFullDate()}}
+      
+
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+ 
+    <ion-card>
+      <ion-card-header>
+        {{singleton.Constantes.bouteille[1][1]}}
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #barCanvas></canvas>
+        
+      <ion-item>
+        <ion-label>qté à vendre </ion-label>
+        <ion-range min="1" max="100" snaps="true" step="5" [(ngModel)]="singleValue12">
+           <ion-label range-right>{{singleValue12}}</ion-label>
+         </ion-range>
+      </ion-item>
 
+      <ion-item>
+        <ion-label>Prix </ion-label>
+        <ion-range min="0" max="2000" step="100" snaps="true" color="secondary" [(ngModel)]="singleValue4"></ion-range>
+      </ion-item>
+
+
+      </ion-card-content>
+    </ion-card>
+ 
 </ion-content>
